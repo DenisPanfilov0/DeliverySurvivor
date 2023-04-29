@@ -14,12 +14,14 @@ namespace DefaultNamespace
             _heroController = FindObjectOfType<HeroController>();
         }
 
+        private void Update()
+        {
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // check if collided with player's hit box
             if (collision.CompareTag("MainHero"))
             {
-                // deal damage to player
                 HeroController playerHealth = collision.GetComponentInParent<HeroController>();
                 
                 if (playerHealth != null)
@@ -27,12 +29,6 @@ namespace DefaultNamespace
                     _heroController.CurrentHealth -= damage;
                     Debug.Log("hahah");
                 }
-
-                // // play hit effect
-                // if (hitEffectPrefab != null)
-                // {
-                //     Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
-                // }
             }
         }
     }
